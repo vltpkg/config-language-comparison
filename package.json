@@ -1,0 +1,51 @@
+{
+  "type": "module",
+  "scripts": {
+    "prepare": "tshy",
+    "pretest": "npm run prepare",
+    "test": "node dist/esm/index.js"
+  },
+  "dependencies": {
+    "@iarna/toml": "^2.2.5",
+    "@ltd/j-toml": "^1.38.0",
+    "@types/ini": "^4.1.0",
+    "@types/js-yaml": "^4.0.9",
+    "ini": "^4.1.2",
+    "js-yaml": "^4.1.0",
+    "polite-json": "^4.0.1",
+    "smol-toml": "^1.1.4",
+    "toml-nodejs": "^0.3.1",
+    "tshy": "^1.14.0",
+    "yaml": "^2.4.2"
+  },
+  "prettier": {
+    "experimentalTernaries": true,
+    "semi": false,
+    "printWidth": 70,
+    "tabWidth": 2,
+    "useTabs": false,
+    "singleQuote": true,
+    "jsxSingleQuote": false,
+    "bracketSameLine": true,
+    "arrowParens": "avoid",
+    "endOfLine": "lf"
+  },
+  "tshy": {
+    "dialects": [
+      "esm"
+    ],
+    "exports": {
+      "./package.json": "./package.json",
+      ".": "./src/index.ts"
+    }
+  },
+  "exports": {
+    "./package.json": "./package.json",
+    ".": {
+      "import": {
+        "types": "./dist/esm/index.d.ts",
+        "default": "./dist/esm/index.js"
+      }
+    }
+  }
+}
